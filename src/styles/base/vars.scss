@@ -130,4 +130,4 @@ $black-p: #000000;
 
 /* Transitions */
 $transition-default: 0.1s ease-in-out;
-$transition-theme: all 0.2s ease-in-out;
+$transition-theme: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out, fill 0.2s ease-in-out; 

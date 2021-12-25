@@ -10,7 +10,7 @@
 	margin: 0;
 	padding: 0;
 	
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Helvetica', 'Montserrat', sans-serif;
 	font-style: normal;
 	font-weight: normal;
 }
@@ -122,96 +122,20 @@ button {
 
 }
 
-/*******************************************************
-	Table - V1
-*******************************************************/
-
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-
-    tr {
-        width: 100%;
-
-        th, td {
-            padding: 8px;
-            border-right: 2px solid var(--color-divider);
-            border-bottom: 2px solid var(--color-divider);
-
-            color: var(--color-txt-t);
-        }
-
-        th {
-            border-top: 2px solid var(--color-divider);
-
-            font-size: 18px;
-            font-weight: bold;
-
-            &:first-child {
-                border-left: 2px solid var(--color-divider);
-            }
-
-            &:first-child, &:last-child {
-                border-top: 2px solid var(--color-divider);
-            }
-
-        }
-
-        td {
-
-            &:first-child {
-                border-left: 2px solid var(--color-divider);
-            }
-
-        }
-
-        &:first-child th {
-
-            &:first-child {
-                border-top-left-radius: 6px;
-            }
-    
-            :last-child {
-                border-top-right-radius: 6px;
-            }
-
-        }
-
-        &:last-child td {
-
-            &:first-child {
-                border-bottom-left-radius: 6px;
-            }
-
-            &:last-child {
-                border-bottom-right-radius: 6px;
-            }
-
-        }
-
-    }
-
-}
-
 
 /*******************************************************
 	Elements
 *******************************************************/
 
 html, body, header, main, footer, section,
-#root, #wrapper,
-#headerContainer, #mainContainer, #footerContainer, .sectionContainer {
+#root, #windowWrapper, #wrapper,
+#headerContainer, #windowContainer, #mainContainer, #footerContainer, .sectionContainer {
     width: 100%;
 
     transition: #{$transition-theme};
 }
 
-/*******************************************************
-	Scroll
-*******************************************************/
-
-body, .scroll {
+.scroll {
     overflow: overlay !important;
 
     &::-webkit-scrollbar {

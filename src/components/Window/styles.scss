@@ -1,0 +1,126 @@
+@import '../../styles/base/vars.scss';
+@import '../../styles/modules/mode.scss';
+
+body {
+
+    #windowWrapper {
+        position: relative;
+
+        width: 100%;
+        height: 100vh;
+    
+        background-color: var(--color-layout-foreground);
+
+        overflow: hidden;
+
+        #windowHeader {
+            position: fixed;
+    
+            display: block;
+            width: 100%;
+            height: 32px;
+            background-color: var(--color-layout-s);
+    
+            z-index: 1001;
+        
+            #windowHeaderContainer {
+                display: grid;
+                grid-template-columns: 1fr 138px;
+                width: 100%;
+                height: 100%;
+    
+                -webkit-app-region: drag;
+    
+                .windowHeaderContent {
+                    height: 100%;
+                    
+                    &.title {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+    
+                        span {
+                            margin-left: 8px;
+
+                            color: var(--color-txt-t);
+                            font-size: 14px;
+                            font-weight: bold;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+    
+                            overflow: hidden;
+                        }
+    
+                    }
+    
+                    &.controls {
+                        display: grid;
+                        grid-template-columns: repeat(3, 46px);
+    
+                        -webkit-app-region: no-drag;
+    
+                        .button {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 46px;
+                            height: 100%;
+    
+                            user-select: none;
+
+                            svg path {
+                                fill: var(--color-txt-t) !important;
+                            }
+    
+                            &:hover {
+                                background-color: var(--color-action-hover);
+
+                                svg path {
+                                    fill: var(--color-txt-p) !important;
+                                }
+
+                            }
+    
+                            &.close {
+    
+                                &:hover {
+                                    background-color: #E81123;
+                                }
+    
+                            }
+    
+                            &#restore-button {
+                                display: none;
+                            }
+                            
+    
+                        }
+    
+                    }
+    
+                }
+        
+            }
+        
+        }
+
+        #windowContainer {
+            height: calc(100vh - 32px);
+            margin-top: 32px;
+        }
+    
+    }
+
+    &.maximized {
+    
+        #restore-button {
+            display: flex !important;
+        }
+
+        #max-button {
+            display: none !important;
+        }
+
+    }
+
+}

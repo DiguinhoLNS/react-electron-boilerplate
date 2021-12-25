@@ -11,9 +11,8 @@ interface State {
 }
 
 const initialState: State = {
-    theme: Theme.Light
+    theme: Theme.Dark
 }
-
 
 const themeSlice = createSlice({
     name: 'theme',

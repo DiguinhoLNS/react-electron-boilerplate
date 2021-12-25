@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow } from 'electron'
 
 let mainWindow: BrowserWindow | null
 
@@ -9,9 +9,11 @@ const createWindow = () => {
 
     mainWindow = new BrowserWindow({
         width: 800,
+        minWidth: 800,
         height: 600,
+        minHeight: 600,
         frame: false,
-        //autoHideMenuBar: true,
+        title: 'Electron Boilerplate',
         titleBarStyle: "hidden",
         webPreferences: {
             nodeIntegration: true,
@@ -19,7 +21,7 @@ const createWindow = () => {
             enableRemoteModule: true,
             devTools: true,
             preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
-        },
+        }
     })
 
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
@@ -28,7 +30,7 @@ const createWindow = () => {
 
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => createWindow())
 
 app.on('window-all-closed', () => {
     if(process.platform !== 'darwin') app.quit()
