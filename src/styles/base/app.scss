@@ -1,0 +1,235 @@
+@import '../base/vars.scss';
+@import '../modules/mode.scss';
+
+/*******************************************************
+	* - V1
+*******************************************************/
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+/*******************************************************
+	Link - V5
+*******************************************************/
+
+a {		
+	border: none;
+	outline: none;
+
+	color: none;
+	text-decoration: none;
+
+	cursor: pointer;
+
+    &:link, :active, :visited, :hover, :focus {
+        border: none;
+        outline: none;
+    
+        color: none;
+        text-decoration: none;
+    }
+
+}
+
+/*******************************************************
+	Input - V3
+*******************************************************/
+
+input {
+	border: none;
+	outline: none;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:-webkit-autofill {
+        transition: color 9999s ease-out, background-color 9999s ease-out;
+        transition-delay: 9999s;
+        -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+        -webkit-transition-delay: 9999s;
+
+        &:hover, &:focus, &:active {
+            transition: color 9999s ease-out, background-color 9999s ease-out;
+            transition-delay: 9999s;
+            -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+            -webkit-transition-delay: 9999s;
+        }
+        
+    }
+
+}
+
+select {
+
+    &:focus {
+        outline: none;
+    }
+
+}
+
+/*******************************************************
+	Image - V2
+*******************************************************/
+
+img {
+	width: 100%;
+	height: auto;
+    vertical-align: top;
+
+    font-size: 16px;
+}
+
+/*******************************************************
+	Text - V3
+*******************************************************/
+
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+
+	font-weight: normal;
+}
+
+/*******************************************************
+	List - V1
+*******************************************************/
+
+ul, li {
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+}
+
+/*******************************************************
+	Button - V1
+*******************************************************/
+
+button {
+	border: none;
+
+    &:hover, &:focus {
+        outline: none;
+    }
+
+}
+
+/*******************************************************
+	Table - V1
+*******************************************************/
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    tr {
+        width: 100%;
+
+        th, td {
+            padding: 8px;
+            border-right: 2px solid var(--color-divider);
+            border-bottom: 2px solid var(--color-divider);
+
+            color: var(--color-txt-t);
+        }
+
+        th {
+            border-top: 2px solid var(--color-divider);
+
+            font-size: 18px;
+            font-weight: bold;
+
+            &:first-child {
+                border-left: 2px solid var(--color-divider);
+            }
+
+            &:first-child, &:last-child {
+                border-top: 2px solid var(--color-divider);
+            }
+
+        }
+
+        td {
+
+            &:first-child {
+                border-left: 2px solid var(--color-divider);
+            }
+
+        }
+
+        &:first-child th {
+
+            &:first-child {
+                border-top-left-radius: 6px;
+            }
+    
+            :last-child {
+                border-top-right-radius: 6px;
+            }
+
+        }
+
+        &:last-child td {
+
+            &:first-child {
+                border-bottom-left-radius: 6px;
+            }
+
+            &:last-child {
+                border-bottom-right-radius: 6px;
+            }
+
+        }
+
+    }
+
+}
+
+
+/*******************************************************
+	Elements
+*******************************************************/
+
+html, body, header, main, footer, section,
+#root, #wrapper,
+#headerContainer, #mainContainer, #footerContainer, .sectionContainer {
+    width: 100%;
+
+    transition: #{$transition-theme};
+}
+
+/*******************************************************
+	Scroll
+*******************************************************/
+
+body, .scroll {
+    overflow: overlay !important;
+
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 6px; 
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background: rgba(0,0,0,0.4); 
+
+        &:hover {
+            background: rgba(0,0,0,0.6); 
+        }
+
+    }
+
+}

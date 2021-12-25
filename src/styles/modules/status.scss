@@ -1,0 +1,29 @@
+@import '../base/vars.scss';
+
+.status {
+
+    &.error {
+        --color-status-p: #{$color-status-error-p};
+        --color-status-s: #{$color-status-error-s};
+        --color-status-t: #{$color-status-error-t};
+    }
+    
+    &.warning {
+        --color-status-p: #{$color-status-warning-p};
+        --color-status-s: #{$color-status-warning-s};
+        --color-status-t: #{$color-status-warning-t};
+    }
+    
+    &.info {
+        --color-status-p: #{$color-status-info-p};
+        --color-status-s: #{$color-status-info-s};
+        --color-status-t: #{$color-status-info-t};
+    }
+    
+    &.success {
+        --color-status-p: #{$color-status-success-p};
+        --color-status-s: #{$color-status-success-s};
+        --color-status-t: #{$color-status-success-t};
+    }
+
+}
