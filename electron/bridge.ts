@@ -1,24 +1,38 @@
-import { contextBridge, ipcRenderer } from 'electron'
+const remote = require("electron").remote
 
-export const api = {
-  /**
-   * Here you can expose functions to the renderer process
-   * so they can interact with the main (electron) side
-   * without security problems.
-   *
-   * The function below can accessed using `window.Main.sendMessage`
-   */
-
-  sendMessage: (message: string) => {
-    ipcRenderer.send('message', message)
-  },
-
-  /**
-   * Provide an easier way to listen to events
-   */
-  on: (channel: string, callback: Function) => {
-    ipcRenderer.on(channel, (_, data) => callback(data))
-  }
+document.onreadystatechange = (event) => {
+    if(document.readyState === "complete") handleWindowControls()
 }
 
-contextBridge.exposeInMainWorld('Main', api)
+window.onbeforeunload = (event) => {
+    remote.BrowserWindow.getFocusedWindow()?.removeAllListeners()
+}
+
+function handleWindowControls(){
+
+    document.getElementById('min-button')?.addEventListener("click", event => {
+        remote.BrowserWindow.getFocusedWindow()?.minimize()
+    })
+
+    document.getElementById('max-button')?.addEventListener("click", event => {
+        remote.BrowserWindow.getFocusedWindow()?.maximize()
+    })
+
+    document.getElementById('restore-button')?.addEventListener("click", event => {
+        remote.BrowserWindow.getFocusedWindow()?.unmaximize()
+    })
+
+    document.getElementById('close-button')?.addEventListener("click", event => {
+        remote.BrowserWindow.getFocusedWindow()?.close()
+    })
+
+    toggleMaxRestoreButtons()
+
+    remote.BrowserWindow.getFocusedWindow()?.on('maximize', toggleMaxRestoreButtons)
+    remote.BrowserWindow.getFocusedWindow()?.on('unmaximize', toggleMaxRestoreButtons)
+
+    function toggleMaxRestoreButtons(){
+        remote.getCurrentWindow()?.isMaximized() ? document.body.classList.add('maximized') : document.body.classList.remove('maximized')
+    }
+
+}

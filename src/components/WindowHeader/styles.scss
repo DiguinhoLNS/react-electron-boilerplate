@@ -1,0 +1,94 @@
+body {
+
+    #windowHeader {
+        position: fixed;
+
+        display: block;
+        width: 100%;
+        height: 32px;
+
+        z-index: 1000;
+    
+        #windowHeaderContainer {
+            display: grid;
+            grid-template-columns: 1fr 138px;
+            width: 100%;
+            height: 100%;
+
+            -webkit-app-region: drag;
+
+            .windowHeaderContent {
+                height: 100%;
+                
+                &.title {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    span {
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+
+                        overflow: hidden;
+                    }
+
+                }
+
+                &.controls {
+                    display: grid;
+                    grid-template-columns: repeat(3, 46px);
+
+                    -webkit-app-region: no-drag;
+
+                    .button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 46px;
+                        height: 100%;
+
+                        user-select: none;
+
+                        &:hover {
+                            background-color: rgba(255,255,255,0.1);
+                        }
+
+                        &.close {
+
+                            &:hover {
+                                background-color: #E81123;
+                            }
+
+                        }
+
+                        &#restore-button {
+                            display: none;
+                        }
+
+                        svg path {
+                            fill: #ffffff !important;
+                        }
+
+                    }
+
+                }
+
+            }
+    
+        }
+    
+    }
+
+    &.maximized {
+
+        #restore-button {
+            display: flex !important;
+        }
+
+        #max-button {
+            display: none !important;
+        }
+
+    }
+
+}

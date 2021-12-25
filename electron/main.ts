@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 
 let mainWindow: BrowserWindow | null
 
@@ -10,10 +10,14 @@ const createWindow = () => {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        autoHideMenuBar: true,
+        frame: false,
+        //autoHideMenuBar: true,
+        titleBarStyle: "hidden",
         webPreferences: {
-            nodeIntegration: false,
+            nodeIntegration: true,
             contextIsolation: true,
+            enableRemoteModule: true,
+            devTools: true,
             preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
         },
     })

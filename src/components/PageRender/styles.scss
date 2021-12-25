@@ -1,0 +1,70 @@
+@import '../../styles/base/vars.scss';
+@import '../../styles/modules/mode.scss';
+
+#wrapper {
+    position: relative;
+    
+    &.center, &.default {
+        min-height: 100vh !important;
+        background-color: var(--color-layout-foreground);
+    }
+
+    &.center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.form {
+        display: grid;
+        grid-template-columns: auto 200px 1fr;
+        height: 100vh;
+        background-color: #{$color-layout-foreground-lm};
+
+        overflow: hidden;
+    }
+
+    &.default {
+        display: flex;
+        flex-direction: row;
+        padding-top: 64px;
+
+        main {
+            width: calc(100% - 300px);
+    
+            overflow: hidden;
+    
+            &:hover {
+                overflow: overlay !important;
+            }
+    
+            &::-webkit-scrollbar {
+                width: 12px;
+    
+                z-index: 1000;
+            }
+            
+            &::-webkit-scrollbar-track {
+                border-radius: 6px; 
+            }
+            
+            &::-webkit-scrollbar-thumb {
+                border-radius: 6px;
+                background: rgba(0,0,0,0.4);
+    
+                &:hover {
+                    background: rgba(0,0,0,0.7); 
+                }
+    
+            }
+    
+            #mainContainer {
+                padding: 24px;
+            }
+    
+        }
+
+    }  
+
+}
