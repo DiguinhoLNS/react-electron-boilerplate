@@ -128,8 +128,8 @@ button {
 *******************************************************/
 
 html, body, header, main, footer, section,
-#root, #windowWrapper, #wrapper,
-#headerContainer, #windowContainer, #mainContainer, #footerContainer, .sectionContainer {
+#root, #windowWrapper, #mainWrapper,
+#headerContainer, #windowContainer, #pageContainer, #mainContainer, #footerContainer, .sectionContainer {
     width: 100%;
 
     transition: #{$transition-theme};

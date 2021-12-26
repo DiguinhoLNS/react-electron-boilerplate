@@ -26,7 +26,7 @@ const Container: React.FC = ({ children }) => {
 
         <div id = "windowWrapper" className = {theme}>
             <Header />
-            <div id = "windowContainer" className = "scroll">{children}</div>
+            <div id = "windowContainer">{children}</div>
         </div>
 
     )

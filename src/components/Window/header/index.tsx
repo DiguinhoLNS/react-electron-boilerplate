@@ -19,7 +19,7 @@ const Header: React.FC = () => {
         <div id = "windowHeader">
             <div id = "windowHeaderContainer">
                 <Content name = "title">
-                    <span>Electron App</span>
+                    <span>Electron Boilerplate</span>
                 </Content>
                 <Content name = "controls">
                     <Icon name = "min" icon = {mdiWindowMinimize} />

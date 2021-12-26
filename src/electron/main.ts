@@ -1,9 +1,9 @@
 import { app, BrowserWindow } from 'electron'
 
-let mainWindow: BrowserWindow | null
-
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string
+
+let mainWindow: BrowserWindow | null
 
 const createWindow = () => {
 
@@ -17,7 +17,7 @@ const createWindow = () => {
         titleBarStyle: "hidden",
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation: true,
+            contextIsolation: false,
             enableRemoteModule: true,
             devTools: true,
             preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY

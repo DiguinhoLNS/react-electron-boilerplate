@@ -6,6 +6,7 @@ import './styles/base/app.scss'
 import store from "./redux/store"
 
 import Window from "./components/Window"
+import MainRoute from "./routes"
 
 const App: React.FC = () => {
 
@@ -13,7 +14,7 @@ const App: React.FC = () => {
 
         <ReduxProvider store = {store}>
             <Window.Container>
-                <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat, et cumque laudantium earum sit distinctio optio libero voluptatem, fugit sequi dolorum consequatur tenetur vero nulla unde at accusantium quam eligendi?</h1>
+                <MainRoute />
             </Window.Container>
         </ReduxProvider>
 
