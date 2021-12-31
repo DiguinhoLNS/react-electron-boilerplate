@@ -4,7 +4,7 @@ import themeReducer from './reducers/theme/themeReducer'
 
 const store = configureStore({
     reducer: {
-        theme: themeReducer,
+        theme: themeReducer
     }
 })
 

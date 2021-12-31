@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon as MdiIcon } from '@mdi/react'
 import { mdiWindowClose, mdiWindowMaximize, mdiWindowMinimize, mdiWindowRestore } from '@mdi/js'
+const electron = window.require("electron")
 
 const Header: React.FC = () => {
 
@@ -9,10 +10,15 @@ const Header: React.FC = () => {
     )
 
     const Icon: React.FC <{name: string, icon: string}> = ({ name, icon }) => (
-        <div id = {`${name}-button`} className = {`button ${name}`}>
+        <div id = {`${name}-button`} className = {`button ${name}`} onClick = {() => handleClick(name)}>
             <MdiIcon path = {icon} className = "icon" size = "18px" />
         </div>
     )
+
+    const handleClick = (name: string) => {
+        console.log(`handle ${name}-button clicked`)
+        electron.ipcRenderer.send(`control-${name}`)
+    }
 
     return(
 

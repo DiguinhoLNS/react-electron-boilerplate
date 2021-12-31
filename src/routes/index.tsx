@@ -1,13 +1,22 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { HashRouter, Link, Route, Routes } from 'react-router-dom'
+
+import { useAppSelector } from '../redux/hooks'
+import { toggleTheme } from '../redux/reducers/theme/themeReducer'
+
 import Window from '../components/Window'
 
 const MainRoute: React.FC = () => {
+
+    const dispatch = useDispatch()
+    const { theme } = useAppSelector(state => state.theme)
 
     const Screen1 = () => (
         <>
             <h1 style = {{color: 'white'}}>Screen1</h1>
             <Link to = "/screen2" style = {{color: 'cyan'}}>Go to screen2</Link>
+            <button onClick = {() => dispatch(toggleTheme())}>Toggle theme {theme}</button>
         </>
     )
 

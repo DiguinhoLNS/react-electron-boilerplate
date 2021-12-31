@@ -12,6 +12,7 @@ body {
         background-color: var(--color-layout-foreground);
 
         overflow: hidden;
+        transition: #{$transition-theme};
 
         #windowHeader {
             position: fixed;
@@ -20,6 +21,8 @@ body {
             width: 100%;
             height: 32px;
             background-color: var(--color-layout-s);
+
+            transition: #{$transition-theme};
     
             z-index: 1001;
         
@@ -43,12 +46,13 @@ body {
                             margin-left: 8px;
 
                             color: var(--color-txt-t);
-                            font-size: 14px;
+                            font-size: 12px;
                             font-weight: bold;
                             text-overflow: ellipsis;
                             white-space: nowrap;
     
                             overflow: hidden;
+                            transition: #{$transition-theme};
                         }
     
                     }
@@ -68,23 +72,27 @@ body {
     
                             user-select: none;
 
+                            transition: #{$transition-theme};
+
                             svg path {
                                 fill: var(--color-txt-t) !important;
+
+                                transition: #{$transition-theme};
                             }
     
                             &:hover {
                                 background-color: var(--color-action-hover);
-
-                                svg path {
-                                    fill: var(--color-txt-p) !important;
-                                }
-
                             }
     
                             &.close {
     
                                 &:hover {
                                     background-color: #E81123;
+
+                                    & svg path {
+                                        fill: #{$color-txt-p-dm} !important;
+                                    }
+
                                 }
     
                             }
@@ -92,7 +100,6 @@ body {
                             &#restore-button {
                                 display: none;
                             }
-                            
     
                         }
     

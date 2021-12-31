@@ -1,13 +1,15 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 
-let mainWindow: BrowserWindow | null
+require('@electron/remote/main').initialize()
 
-const createWindow = () => {
+const ipc = ipcMain
 
-    mainWindow = new BrowserWindow({
+function createWindow(){
+
+    let mainWindow: BrowserWindow | null = new BrowserWindow({
         width: 800,
         minWidth: 800,
         height: 600,
@@ -25,17 +27,21 @@ const createWindow = () => {
     })
 
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
-
     mainWindow.on('closed', () => mainWindow = null)
+
+    ipc.on('control-min', () => {mainWindow?.minimize()})
+    ipc.on('control-max', () => {mainWindow?.maximize()})
+    ipc.on('control-restore', () => {mainWindow?.unmaximize()})
+    ipc.on('control-close', () => {mainWindow?.close()})
 
 }
 
 app.on('ready', () => createWindow())
 
-app.on('window-all-closed', () => {
-    if(process.platform !== 'darwin') app.quit()
-})
-
 app.on('activate', () => {
     if(BrowserWindow.getAllWindows().length === 0) createWindow()
+})
+
+app.on('window-all-closed', () => {
+    if(process.platform !== 'darwin') app.quit()
 })
