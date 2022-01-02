@@ -7,6 +7,8 @@ import { toggleTheme } from '../redux/reducers/theme/themeReducer'
 
 import Window from '../components/Window'
 
+const electron = window.require("electron")
+
 const MainRoute: React.FC = () => {
 
     const dispatch = useDispatch()
@@ -17,6 +19,7 @@ const MainRoute: React.FC = () => {
             <h1 style = {{color: 'white'}}>Screen1</h1>
             <Link to = "/screen2" style = {{color: 'cyan'}}>Go to screen2</Link>
             <button onClick = {() => dispatch(toggleTheme())}>Toggle theme {theme}</button>
+            <button onClick = {() => electron.ipcRenderer.send('showMessage')}>Show Notification</button>
         </>
     )
 

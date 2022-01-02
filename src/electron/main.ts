@@ -4,8 +4,7 @@ declare const MAIN_WINDOW_WEBPACK_ENTRY: string
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 
 require('@electron/remote/main').initialize()
-
-const ipc = ipcMain
+const { Notification } = require('electron')
 
 function createWindow(){
 
@@ -29,10 +28,12 @@ function createWindow(){
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
     mainWindow.on('closed', () => mainWindow = null)
 
-    ipc.on('control-min', () => {mainWindow?.minimize()})
-    ipc.on('control-max', () => {mainWindow?.maximize()})
-    ipc.on('control-restore', () => {mainWindow?.unmaximize()})
-    ipc.on('control-close', () => {mainWindow?.close()})
+    ipcMain.on('control-min', () => mainWindow?.minimize())
+    ipcMain.on('control-max', () => mainWindow?.maximize())
+    ipcMain.on('control-restore', () => mainWindow?.unmaximize())
+    ipcMain.on('control-close', () => mainWindow?.close())
+
+    ipcMain.on('showMessage', () => new Notification({title: 'Hello', body: 'Hello World'}).show())
 
 }
 
@@ -45,3 +46,5 @@ app.on('activate', () => {
 app.on('window-all-closed', () => {
     if(process.platform !== 'darwin') app.quit()
 })
+
+app.setAppUserModelId('Electron Boilerplate')

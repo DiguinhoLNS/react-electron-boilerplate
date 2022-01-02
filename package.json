@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "repository": "https://github.com/DiguinhoLNS/electron-boilerplate.git",
   "author": "Rodrigo Santos <58148787+DiguinhoLNS@users.noreply.github.com>",
+  "description": "A boilerplate for electron projects",
   "license": "MIT",
   "keywords": [],
   "main": "./.webpack/main/index.js",
@@ -18,6 +19,7 @@
     "@mdi/js": "^6.5.95",
     "@mdi/react": "^1.5.0",
     "@reduxjs/toolkit": "^1.7.1",
+    "node-notifier": "^10.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hot-loader": "4.13.0",
@@ -79,11 +81,11 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "name": "Electron starter",
-        "executableName": "electron-starter",
-        "icon": "assets/icon",
+        "name": "electronboilerplate",
+        "executableName": "electronboilerplate",
+        "icon": "./src/assets/images/icon",
         "extraResource": [
-          "assets"
+          "./src/assets/images"
         ]
       },
       "plugins": [
@@ -111,7 +113,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "Electron Starter"
+            "name": "electronboilerplate"
           }
         },
         {

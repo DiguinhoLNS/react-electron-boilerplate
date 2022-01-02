@@ -1,26 +1,19 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { reactLocalStorage as ls } from 'reactjs-localstorage'
 
 import '../styles.scss'
 
 import { useAppSelector } from '../../../redux/hooks'
-import { setTheme, Theme } from '../../../redux/reducers/theme/themeReducer'
 
 import Header from '../header'
+import configTheme from '../../../utils/configTheme'
 
 const Container: React.FC = ({ children }) => {
 
     const dispatch = useDispatch()
     const { theme } = useAppSelector(state => state.theme)
 
-    useLayoutEffect(() => {
-        const lsTheme = ls.get('theme') as Theme | undefined
-        const matchTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.Dark : Theme.Light
-
-        if(!!lsTheme) dispatch(setTheme(lsTheme))
-        else dispatch(setTheme(matchTheme))
-    }, [dispatch])
+    useEffect(() => {configTheme({dispatch})}, [dispatch])
 
     return(
 

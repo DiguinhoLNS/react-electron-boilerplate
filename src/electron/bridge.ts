@@ -1,6 +1,4 @@
 const remote = require('@electron/remote')
-const { contextBridge } = require('electron')
-
 const win = remote.getCurrentWindow()
 
 document.onreadystatechange = () => {
@@ -14,11 +12,7 @@ function handleWindowControls(){
     win.on('unmaximize', toggleMaxRestoreButtons)
 
     function toggleMaxRestoreButtons(){
-        if(win.isMaximized()){
-            document.body.classList.add('maximized')
-        }else{
-            document.body.classList.remove('maximized')
-        }
+        win.isMaximized() ? document.body.classList.add('maximized') : document.body.classList.remove('maximized')
     }
 
 }

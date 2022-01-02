@@ -72,12 +72,8 @@ body {
     
                             user-select: none;
 
-                            transition: #{$transition-theme};
-
                             svg path {
                                 fill: var(--color-txt-t) !important;
-
-                                transition: #{$transition-theme};
                             }
     
                             &:hover {

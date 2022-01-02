@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon as MdiIcon } from '@mdi/react'
 import { mdiWindowClose, mdiWindowMaximize, mdiWindowMinimize, mdiWindowRestore } from '@mdi/js'
+
 const electron = window.require("electron")
 
 const Header: React.FC = () => {
